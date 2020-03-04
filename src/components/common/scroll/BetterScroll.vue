@@ -22,28 +22,32 @@
     this.scroll =  new BScroll(this.$refs.wrapper,{
       click:true,
       scrollbar: true,
-      probeType:this.probeType,
-      pullUpLoad:this.pullUpLoad
-
+      probeType:this.probeType,  /**设置监听滚动*/
+      pullUpLoad:this.pullUpLoad    /**设置监听下拉*/
     });
     /**监听滚动 */
-    this.scroll.on('scroll',position => {
-      this.$emit('scrollPosition',position)
-    })
+    if(this.probeType===1 || this.probeType===3) {
+      this.scroll.on('scroll',position => {
+        /**向home组件发射滚动事件 */
+        this.$emit('scrollPosition',position)
+      })
+    }
     /**监听上拉加载 */
-    this.scroll.on('pullingUp',() => {
-      console.log('上拉加载更多')
+    this.pullUpLoad && this.scroll.on('pullingUp',() => {
       this.$emit('pullingLoad')
     })
     },
     methods: {
       scrollTo(x,y,time=300) {
-        this.scroll.scrollTo(x,y,time);
-        console.log()
+        this.scroll && this.scroll.scrollTo(x,y,time);
       },
       /**添加完成下拉 */
       finishPullUp() {
         this.scroll.finishPullUp();
+      },
+      refresh() {
+        this.scroll && this.scroll.refresh();
+        console.log('---')
       }
     },
   }

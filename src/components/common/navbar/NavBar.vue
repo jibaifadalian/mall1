@@ -17,20 +17,20 @@ export default {
   height: 44px;
   line-height: 44px;
   text-align: center;
-  position: fixed;
-  top:0;
-  left: 0;
-  right: 0;
-  z-index: 10;
+  // position: fixed;
+  // top:0;
+  // left: 0;
+  // right: 0;
+  // z-index: 10;
   background-color: #fff;
   .left,.right{
     width:60px;
-    background-color: red;
+    // background-color: red;
 
   }
   .center{
     flex: 1;
-    background-color: pink;
+    // background-color: pink;
   }
 }
 </style>

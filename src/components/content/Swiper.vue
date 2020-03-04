@@ -4,8 +4,6 @@
         <slot></slot>
     </div>
     <div class="swiper-pagination"></div> 
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
   </div>
 </template>
 <script>
@@ -13,20 +11,25 @@ import Swiper from 'swiper';
 import 'swiper/css/swiper.css';
 export default {
   name: 'Swiper',
+  data() {
+    return {
+      swiper:null
+    }
+  },
   mounted() {
-    new Swiper('.swiper-container', {
-          freeMode: true,
-          centeredSlides: true,
-          autoplay : 1000,
-          prevButton:'.swiper-button-prev',
-          nextButton:'.swiper-button-next',
-        
-  })
+  this.swiper = new Swiper('.swiper-container', {
+          autoplay:true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            renderBullet: function (index, className) {
+               return '<span class="' + className + '">' + (index + 1) + '</span>';
+            }
+          },
+    }) 
 }
 }
 </script>
 <style lang='less' scoped>
-.carousel{
-  margin-top: 44px;
-}
+ 
 </style>
