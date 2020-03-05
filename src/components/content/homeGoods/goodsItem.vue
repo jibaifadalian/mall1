@@ -1,6 +1,6 @@
 <template>
   <div class='goods-item' @click="toDetail">
-    <img :src="goodsItem.show.img" alt="" @load="imgLoad">
+    <img :src="showImage" alt="" @load="imgLoad">
     <p class='title'>{{goodsItem.title}}</p>
     <span class='price'>{{goodsItem.price}}</span>
     <img src='@/assets/imgs/tabbar/shoucang.svg' class='shoucang'/>
@@ -25,6 +25,11 @@ export default {
         iid:this.goodsItem.iid
        }
      })
+   }
+ },
+ computed: {
+   showImage() {
+     return this.goodsItem.image || this.goodsItem.show.img;
    }
  },
 }

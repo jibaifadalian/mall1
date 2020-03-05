@@ -1,7 +1,7 @@
 <template>
     <van-swipe :autoplay='autoplay'>
     <van-swipe-item v-for="(image, index) in images" :key="index">
-      <img v-lazy="image" />
+      <img v-lazy="image" @load="imgLoad"/>
     </van-swipe-item>
   </van-swipe>
 
@@ -15,7 +15,12 @@ export default {
   props:{
     images:Array,
     autoplay:Number
-  }
+  },
+  methods: {
+    imgLoad() {
+      this.$emit('swiperImageLoad')
+    }
+  },
 }
 </script>
 <style lang='less' scoped>

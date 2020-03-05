@@ -16,5 +16,7 @@ export default {
 }
 </script>
 <style lang="less">
-
+*{
+  font-size: 14px;
+}
 </style>

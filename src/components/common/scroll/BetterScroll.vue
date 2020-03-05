@@ -22,6 +22,7 @@
     this.scroll =  new BScroll(this.$refs.wrapper,{
       click:true,
       scrollbar: true,
+      mouseWheel:true,
       probeType:this.probeType,  /**设置监听滚动*/
       pullUpLoad:this.pullUpLoad    /**设置监听下拉*/
     });
@@ -47,7 +48,6 @@
       },
       refresh() {
         this.scroll && this.scroll.refresh();
-        console.log('---')
       }
     },
   }

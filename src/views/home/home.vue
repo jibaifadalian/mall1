@@ -6,11 +6,13 @@
       <tab-control :title="title" @tabClick='changeTab' ref="tabControl" v-show='showTabControl'/>
       <better-scroll class='content' ref='scroll' :probeType='3' 
       @scrollPosition='homePosition' :pullUpLoad='true' @pullingLoad='LoadMore'>
-        <swiper>
+        <!-- <swiper>
           <div class="swiper-slide" v-for="item in banners" :key="item.acm">
             <img :src="item.image" alt="" @load="swiperImageLoad">
           </div>
-        </swiper>
+        </swiper> -->
+        <van-swiper :images='images' :autoplay='3000' 
+        @swiperImageLoad='swiperImageLoad'/>
         <recommand :childrecommand='recommends'></recommand> 
         <tab-control :title="title" @tabClick='changeTab' ref="tabControl"></tab-control>
         <home-goods :goods="showGoods"/> 
@@ -20,7 +22,8 @@
 </template>
 <script>
 import NavBar from '@/components/common/navbar/NavBar';
-import Swiper from '@/components/content/Swiper/';
+// import Swiper from '@/components/content/Swiper/';
+import VanSwiper from '@/components/content/VanSwiper';
 import Recommand from './homeChild/Recommand';
 import HomeGoods from '@/components/content/homeGoods/HomeGoods'
 /**导入公共组件 */
@@ -30,6 +33,7 @@ import BackTop from '@/components/content/homeGoods/backTop';
 /**导入js文件 */
 import {getHomeMultidata,getHomeGoods} from '@/network/home';
 import {debounce} from '@/utils/debouce.js';
+import { Goods } from '@/network/detail';
 export default {
   name: 'Home',
   data() {
@@ -38,7 +42,8 @@ export default {
       showTabControl:false,
       isShow:false,
       tabTop:0,
-      banners:[],
+      // banners:[],
+      images:[],
       recommends:[],
       title:['流行','新款','精选'],
       currentType:'pop',
@@ -51,7 +56,8 @@ export default {
   },
   components:{
     NavBar,
-    Swiper,
+    // Swiper,
+    VanSwiper,
     Recommand,
     TabControl,
     HomeGoods,
@@ -67,7 +73,7 @@ export default {
    this.getHomeGoods('sell');
   },
   mounted() {
-    /**防抖动 */
+    /**防抖动 */   
     const refresh = debounce(this.$refs.scroll.refresh,500);
     /**监听图片加载 */
     this.$bus.$on('imgLoaded',() => {
@@ -87,7 +93,8 @@ export default {
      /**请求轮播图，推荐信息 */
      getHomeMultidata() {
        getHomeMultidata().then(res => {
-       this.banners = res.data.banner.list;
+      //  this.banners = res.data.banner.list;
+       this.images = res.data.banner.list.map(item => item.image)
        this.recommends = res.data.recommend.list;
        });
      },
