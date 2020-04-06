@@ -1,6 +1,6 @@
 <template>
     <div >
-      <h2>做了一天</h2>
+      <h2>Profile</h2>
     </div>
 </template>
 

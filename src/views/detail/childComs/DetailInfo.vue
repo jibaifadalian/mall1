@@ -21,14 +21,14 @@ export default {
   },
   methods: {
     imgLoad() {
-      if(++this.counter===this.imgLength){
-        this.$emit('detailImgLoaded')
-      }
+      // if(++this.counter===this.imgLength){
+        this.$emit('detailImgLoaded') ;
+      // }
     }
   },
   watch: {
-    detailLoaded() {
-      this.imgLength = this.detail.detailImage[0].list.length;
+    imgLength() {
+      this.imgLength = this.detail.detailImage[0].list.length; 
     }
   },
 }

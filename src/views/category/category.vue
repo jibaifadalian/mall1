@@ -1,6 +1,6 @@
 <template>
     <div >
-      <h2>但这是新学的技术，孰能生巧，加油</h2>
+      <h2>Category</h2>
       
     </div>
 </template>

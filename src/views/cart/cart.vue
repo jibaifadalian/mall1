@@ -1,38 +1,52 @@
 <template>
-<div>
-  <van-swipe :autoplay="3000">
-    <van-swipe-item v-for="(image, index) in images" :key="index">
-      <img v-lazy="image" />
-    </van-swipe-item>
-  </van-swipe>
-</div>
+  <div class='cart-header'>
+    <nav-bar class='cart-bar'>
+      <div slot="left"><i class='iconfont icon-back' @click="toBack"></i></div>
+      <div slot="center">我的购物车({{CartLength}})</div>
+    </nav-bar>
+    <cart-list/>
+    <cart-bottom-bar/>
+  </div>
 </template>
 
 <script>
-import Vue from 'vue';
-import {Swipe,SwipeItem,Lazyload} from 'vant';
-Vue.use(Lazyload).use(Swipe).use(SwipeItem);
+import CartList from './cartLlist';
+import NavBar from '@/components/common/navbar/NavBar';
+import CartBottomBar from './CartBottomBar';
+import { mapGetters } from 'vuex';
 export default {
   name: 'Cart',
+  components:{
+    NavBar,
+    CartList,
+    CartBottomBar
+  },
   data() {
     return {
-      images: [
-        'https://img.yzcdn.cn/vant/apple-1.jpg',
-        'https://img.yzcdn.cn/vant/apple-2.jpg'
-      ]
+      
+    }
+  },
+  methods: {
+    toBack() {
+      this.$router.back();
+    }
+  },
+  computed: {
+    ...mapGetters(['CartLength'])
+  },
+}
+</script>
+<style lang="less" scoped>
+.cart-header{
+  height: 100vh;
+  .cart-bar{
+  background-color: hotpink;
+  color: #fff;
+  font-weight: 700;
+    i {
+    font-size: 30px;
     }
   }
 }
-</script>
-<style lang="less">
-.my-swipe .van-swipe-item {
-  color: #fff;
-  font-size: 20px;
-  line-height: 150px;
-  text-align: center;
-  background-color: #39a9ed;
-}
-img{
-  width: 100%;
-}
+
 </style>

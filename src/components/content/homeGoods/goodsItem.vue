@@ -49,7 +49,6 @@ export default {
   .title{
     overflow: hidden;
     white-space: nowrap;
-    overflow: hidden; 
     text-overflow:ellipsis;
     padding: 5px;
   }

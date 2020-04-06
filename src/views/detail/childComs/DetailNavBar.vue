@@ -27,6 +27,7 @@ export default {
  methods: {
    changeColor(index){
      this.currentIndex = index;
+     this.$emit('titleClick',index);
    },
    backClick() {
      this.$router.back();

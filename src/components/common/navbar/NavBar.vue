@@ -22,7 +22,7 @@ export default {
   // left: 0;
   // right: 0;
   // z-index: 10;
-  background-color: #fff;
+  // background-color: #fff;
   .left,.right{
     width:60px;
     // background-color: red;

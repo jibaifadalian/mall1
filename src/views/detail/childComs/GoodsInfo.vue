@@ -1,5 +1,5 @@
 <template>
-  <div class="goods-item" v-if="Object.keys(goods).length!==0">
+  <div class="goods-info-item" v-if="Object.keys(goods).length!==0">
     <div class='goodsInfo'>
         <h5>{{goods.title}}</h5>
         <div class="price">
@@ -30,16 +30,17 @@ export default {
 }
 </script>
 <style lang='less' scoped>
-.goods-item{
+.goods-info-item{
   font-size: 12px;
-  padding: 5px;
+  // padding: 5px;
   border-bottom: 3px solid #ccc;
   padding-bottom: 10px;
+  width:100%;
+  box-sizing: border-box;
 }
 .price{
   height: 25px;
   line-height: 25px;
- 
 }
 .realPrice{
   font-size: 20px;

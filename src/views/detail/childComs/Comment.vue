@@ -1,10 +1,9 @@
 <template>
-  <div v-if="Object.keys(comments).length" class='info-comment'>
+  <div v-if="Object.keys(comments).length!=0" class='info-comment'>
     <div class="comment">
       <div>用户评价</div>
       <div>更多</div> 
     </div>
-     
     <div class="info-user">
       <img :src="comments.user.avatar" alt="">
       <span>{{comments.user.uname}}</span>
