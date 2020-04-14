@@ -24,7 +24,6 @@ import HomeGoods from '@/components/content/homeGoods/HomeGoods'
 /**导入公共组件 */
 import TabControl from '@/components/content/TabControl';
 import BetterScroll from '@/components/common/scroll/BetterScroll';
-// import BackTop from '@/components/content/homeGoods/backTop';
 /**导入js文件 */
 import {getHomeMultidata,getHomeGoods} from '@/network/home';
 import {debounce} from '@/utils/debouce.js';
@@ -36,7 +35,6 @@ export default {
     return {
       scrollY:0,
       showTabControl:false,
-      // isShow:false,
       tabTop:0,
       images:[],
       recommends:[],
@@ -57,20 +55,23 @@ export default {
     TabControl,
     HomeGoods,
     BetterScroll,
-    // BackTop
   },
+
   mixins:[imgLoadMixin,backToTop],
+
   created() {
     /**请求banners 推荐数据 */
    this.getHomeMultidata(); 
-   /**请求goods */
+   /**请求goods  调用methods方法，传递类型*/
    this.getHomeGoods('pop');
    this.getHomeGoods('new');
    this.getHomeGoods('sell');
   },
+
   mounted() {
    this.changeTab(0);
   },
+
   methods: {
     /**请求商品 */
      getHomeGoods(type){
@@ -105,12 +106,9 @@ export default {
        this.$refs.topTabControl.currentIndex = index;
        this.$refs.tabControl.currentIndex = index;
      },
-    //  backTop() {
-    //    this.$refs.scroll.scrollTo(0,0);
-    //  },
+    
      /**监听滚动 */
      homePosition(pos) {
-        // this.isShow = Math.abs(pos.y) > 1000;
         this.demo(pos);//判断显示隐藏的位置  在混入中
         this.showTabControl = Math.abs(pos.y) > this.tabTop + 44 ;
      },
@@ -141,6 +139,7 @@ export default {
   },
 }
 </script>
+
   <style lang="less" scoped> 
   .header{
     height:100vh;

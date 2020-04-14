@@ -109,6 +109,7 @@ export default {
     titleClick(index) {
       this.$refs.scroll.scrollTo(0,-this.topTitleList[index],0)
     },
+    
     /**实现滚动对应标题栏联动效果 */
     detailScroll(pos) {
       // this.isShow = Math.abs(pos.y) > 1000;
@@ -117,12 +118,6 @@ export default {
       /**比较position与offsetTop [0,1000,2000,3000] 1-1000 index=0 */
       let length = this.topTitleList.length;
       for(let i = 0;i < length-1;i++) {
-        // if((this.currentIndex !== i) &&
-        // ((i < length - 1 && positonY >= this.topTitleList[i] && positonY < this.topTitleList[i+1]) 
-        // ||(i ===length-1 && positonY >= this.topTitleList[i]))) {
-        //   console.log(i)
-        //   this.$refs.nav.currentIndex = i;
-        // }
         if((this.currentIndex !== i) && positonY >= this.topTitleList[i] 
         && positonY < this.topTitleList[i+1]){
           this.currentIndex = i;
@@ -130,8 +125,11 @@ export default {
         }
       }
     },
+
+
     /**点击加入购物车 */
     addToCart() {
+      console.log(this)
       /**将商品的信息打包存储 */
       let goodsInfo = {};
       goodsInfo.iid = this.iid;

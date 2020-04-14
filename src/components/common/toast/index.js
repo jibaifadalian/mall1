@@ -9,6 +9,7 @@ obj.install = function(Vue) {
   toast.$mount(document.createElement('div'));
   //4.将toast.$el追加在body中（对应的就是div）  
   document.body.appendChild(toast.$el);
+  //5.组件挂在vue原型上
   Vue.prototype.$toast = toast;
 }
 export default obj;

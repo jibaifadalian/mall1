@@ -1,7 +1,9 @@
 <template>
   <div class='tabControl'>
-    <div v-for="(item,index) in title" :key="index" 
-    @click="changeBorder(index)" :class="{active:index===currentIndex}">
+    <div v-for="(item,index) in title" 
+         :key="index" 
+         @click="changeBorder(index)" 
+         :class="{active:index===currentIndex}">
       <span>{{item}}</span>
     </div>
   </div>

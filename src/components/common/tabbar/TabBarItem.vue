@@ -26,27 +26,24 @@ export default {
   methods: {
     itemClick(){
       this.$router.history.replace(this.path)
-      // console.log(this.$router)
     }
   },
 }
 </script>
 
-
-
 <style lang="less">
  .tab-bar-item{
-  height: 49px;
-  flex:1;
-  text-align: center;
-  font-size: 14px;
+    height: 49px;
+    flex:1;
+    text-align: center;
+    font-size: 14px;
 
-  img{
-    height:20px;
-    vertical-align: middle;
-    margin-top: 5px;
-    margin-bottom: 2px;
-  }
+    img{
+      height:20px;
+      vertical-align: middle;
+      margin-top: 5px;
+      margin-bottom: 2px;
+    }
   }
 
 </style>
